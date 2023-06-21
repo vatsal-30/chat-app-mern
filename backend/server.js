@@ -28,7 +28,6 @@ app.get("/api/chat", (req, res) => {
 });
 
 app.get("/api/chat/:id", (req, res) => {
-  // console.log(req.params.id);
 
   const singleChat = chats.find((c) => c._id === req.params.id);
   res.send(singleChat);
@@ -41,14 +40,12 @@ const PORT = process.env.PORT || 8080;
 
 const server = app.listen(PORT, () => {
   console.log(`LISTENING ON PORT ${PORT}`.yellow.bold);
-  // console.log(process.env.PORT);
-  // console.log(process.env.MONGO_URI);
 });
 
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:3001",
+    origin: "http://localhost:3000",
   },
 });
 
@@ -63,7 +60,6 @@ io.on("connection", (socket) => {
 
   socket.on("join chat", (room) => {
     socket.join(room);
-    console.log("User Joined Room: " + room);
   });
   
   socket.on("typing", (room) => socket.in(room).emit("typing"));

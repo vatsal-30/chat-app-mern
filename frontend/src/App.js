@@ -1,7 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import { Button, ButtonGroup } from '@chakra-ui/button';
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Homepage from './Pages/Homepage';
 import ChatPage from './Pages/ChatPage';
 

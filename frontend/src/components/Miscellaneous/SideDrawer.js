@@ -13,25 +13,23 @@ import UserListItem from "../useravatar/UserListItem";
 import {
   Drawer,
   DrawerBody,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
-  DrawerCloseButton,
+  useToast,
   Input,
-  useToast
 } from "@chakra-ui/react";
+import NotificationBadge, {Effect} from "react-notification-badge";
 import { useDisclosure } from "@chakra-ui/hooks";
-import { Avatar, AvatarBadge, AvatarGroup } from "@chakra-ui/react";
+import { Avatar } from "@chakra-ui/react";
 import { Tooltip } from "@chakra-ui/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from "@chakra-ui/button";
-import { color } from "framer-motion";
 import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { ChatState } from "../../Context/chatProvider";
 import ProfileModal from "./ProfileModal";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { getSender } from "../../config/ChatLogics";
 
 const SideDrawer = () => {
   const [search, setSearch] = useState("");
@@ -96,8 +94,6 @@ const SideDrawer = () => {
   };
 
   const accessChat = async (userId) => {
-    
-
     try {
       setLoadingChat(true);
       const config = {
@@ -110,12 +106,11 @@ const SideDrawer = () => {
 
       if (!chats.find((c) => c._id === data._id)) {
         setChats([data, ...chats]);
-      };
+      }
 
       setSelectedChat(data);
       setLoadingChat(false);
       onClose();
-
     } catch (error) {
       toast({
         title: "Error fetching the chat",
@@ -145,7 +140,6 @@ const SideDrawer = () => {
               className="fa-sharp fa-regular fa-magnifying-glass"
               style={{ color: "000000" }}
             ></i>
-            {/* <FontAwesomeIcon icon="fa-sharp fa-regular fa-magnifying-glass" style={{color: "#000000", backgroundColor: "aqua"}} /> */}
             <Text
               display={{ base: "none", md: "flex" }}
               px="4"
@@ -159,9 +153,24 @@ const SideDrawer = () => {
         <div>
           <Menu>
             <MenuButton p={1}>
+            <NotificationBadge 
+            count={notification.length}
+            effect={Effect.SCALE} />
               <BellIcon fontSize={"2xl"} m={"1"} />
             </MenuButton>
-            {/* <MenuList></MenuList> */}
+            <MenuList pl={2}>
+              {!notification.length && "No new Messages"}
+              {notification.map((notif) => (
+                <MenuItem key={notif._id} onClick={() => {
+                  setSelectedChat(notif.chat);
+                  setNotification(notification.filter((n) => n !== notif));
+                }}>
+                  {notif.chat.isGroupChat
+                    ? `New Meassage in ${notif.chat.chatName}`
+                    : `New Message from ${getSender(user, notif.chat.users)}`}
+                </MenuItem>
+              ))}
+            </MenuList>
           </Menu>
           <Menu>
             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
@@ -194,23 +203,20 @@ const SideDrawer = () => {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
-              <Button
-               onClick={handleSearch}
-              >
-                Go
-              </Button>
+              <Button onClick={handleSearch}>Go</Button>
             </Box>
             {loading ? (
               <ChatLoading />
-              ) :(
-                searchResults?.map(user => (
-                  <UserListItem
+            ) : (
+              searchResults?.map((user) => (
+                <UserListItem
                   key={user._id}
                   user={user}
-                  handleFunction={() => accessChat(user._id)} />
-                ))
-              )}
-              {loadingChat && <Spinner ml={"auto"} display={"flex"} />}
+                  handleFunction={() => accessChat(user._id)}
+                />
+              ))
+            )}
+            {loadingChat && <Spinner ml={"auto"} display={"flex"} />}
           </DrawerBody>
         </DrawerContent>
       </Drawer>

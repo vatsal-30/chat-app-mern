@@ -8,13 +8,13 @@ const ChatProvider = ({ children }) => {
   const [chats, setChats] = useState([]);
   const [selectedChat, setSelectedChat] = useState();
   const navigate = useNavigate();
+  const [notification, setNotification] = useState([]);
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     setUser(userInfo);
 
     if (!userInfo) navigate("/");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate]);
 
   return (
@@ -25,6 +25,8 @@ const ChatProvider = ({ children }) => {
         selectedChat,
         setSelectedChat,
         chats,
+        notification,
+        setNotification,
         setChats
       }}
     >

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Text } from "@chakra-ui/layout";
+import { Box } from "@chakra-ui/layout";
 import {
   Modal,
   ModalOverlay,
@@ -10,9 +10,6 @@ import {
   ModalCloseButton,
   useToast,
   FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
   Input,
 } from "@chakra-ui/react";
 import axios from "axios";

@@ -1,11 +1,11 @@
 {
-  "name": "chat-app",
+  "name": "chat-app-mern",
   "version": "1.0.0",
-  "description": "",
+  "description": "Chat Application",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon backend/server.js"
+    "start": "nodemon ./backend/server.js"
   },
   "author": "Vatsal Ajmeri",
   "license": "ISC",

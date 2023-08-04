@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   FormControl,
@@ -11,6 +11,7 @@ import {
   Button,
   useToast
 } from "@chakra-ui/react";
+import "./Login.css";
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -39,7 +40,7 @@ const Login = () => {
       return;
     }
 
-    
+
     try {
       const config = {
         headers: {
@@ -63,6 +64,7 @@ const Login = () => {
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
       navigate("/chats");
+      // setLoading(false);
     } catch (error) {
       toast({
         title: "Error Occured!",
@@ -113,19 +115,78 @@ const Login = () => {
       >
         Login
       </Button>
+      <div style={{marginTop: "15px"}}>Users Credentials</div>
+      <div className="button-style" >
+        <div>
+          <Button
+            variant="solid"
+            colorScheme="red"
+            width="110%"
+            style={{ marginTop: 8 }}
+            onClick={() => {
+              setEmail("ram@gmail.com");
+              setPassword("123456");
+            }}
+          >
+            Ram
+          </Button>
+        </div>
+        <div>
+          <Button
+            variant="solid"
+            colorScheme="red"
+            width="110%"
+            style={{ marginTop: 8 }}
+            onClick={() => {
+              setEmail("shyam@gmail.com");
+              setPassword("123456");
+            }}
+          >
+            Shyam
+          </Button>
+        </div>
+        <div>
+          <Button
+            variant="solid"
+            colorScheme="red"
+            width="110%"
+            style={{ marginTop: 8 }}
+            onClick={() => {
+              setEmail("radha@gmail.com");
+              setPassword("123456");
+            }}
+          >
+            Radha
+          </Button>
+        </div>
+        <div>
+          <Button
+            variant="solid"
+            colorScheme="red"
+            width="110%"
+            style={{ marginTop: 8 }}
+            onClick={() => {
+              setEmail("mohan@gmail.com");
+              setPassword("123456");
+            }}
+          >
+            Mohan
+          </Button>
+        </div>
 
-      <Button
+      </div>
+      {/* <Button
       variant="solid"
         colorScheme="red"
         width="100%"
         style={{ marginTop: 15 }}
         onClick={() => {
-          setEmail("guest@example.com");
+          setEmail("ram@gmail.com");
           setPassword("123456");
         }}
       >
         Get guest user credentials
-      </Button>
+      </Button> */}
     </VStack>
   );
 };

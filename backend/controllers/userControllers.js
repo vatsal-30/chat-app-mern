@@ -44,29 +44,35 @@ const authUser = asyncHandler(async (req, res) => {
 
   const user = await User.findOne({ email });
 
-  if (user && (await user.matchPassword(password))) {
-    res.json({
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      password: User.password,
-      pic: user.pic,
-      token: generateToken(user._id),
-    });
+  if (user) {
+    if ((await user.matchPassword(password))) {
+      res.json({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        password: User.password,
+        pic: user.pic,
+        token: generateToken(user._id),
+      });
+    } else {
+      res.status(401);
+      throw new Error(`Invaid password.`);
+    }
   } else {
     res.status(401);
-    throw new Error(`Invaid Id or password.`);
+    throw new Error(`No account exist.`);
   }
+
 });
 
 const allUsers = async (req, res) => {
   const keyword = req.query.search
     ? {
-        $or: [
-          { name: { $regex: req.query.search, $options: "i" } },
-          { email: { $regex: req.query.search, $options: "i" } },
-        ],
-      }
+      $or: [
+        { name: { $regex: req.query.search, $options: "i" } },
+        { email: { $regex: req.query.search, $options: "i" } },
+      ],
+    }
     : {};
 
   const users = await User.find(keyword).find({ _id: { $ne: req.user._id } });

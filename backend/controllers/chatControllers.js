@@ -6,9 +6,10 @@ const accessChat = asyncHandler(async (req, res) => {
   const { userId } = req.body;
 
   if (!userId) {
-    console.log(`UserId param not sent with request`);
+    console.log("UserId param not sent with request");
     return res.sendStatus(400);
   }
+
   var isChat = await Chat.find({
     isGroupChat: false,
     $and: [
@@ -35,13 +36,11 @@ const accessChat = asyncHandler(async (req, res) => {
 
     try {
       const createdChat = await Chat.create(chatData);
-
       const FullChat = await Chat.findOne({ _id: createdChat._id }).populate(
         "users",
         "-password"
       );
-
-      res.status(200).send(FullChat);
+      res.status(200).json(FullChat);
     } catch (error) {
       res.status(400);
       throw new Error(error.message);

@@ -38,6 +38,7 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 8080;
 
 const server = app.listen(PORT, () => {
+  console.log(`Vatsal Ajmeri`.rainbow.bold);
   console.log(`LISTENING ON PORT ${PORT}`.yellow.bold);
 });
 

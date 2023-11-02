@@ -117,20 +117,7 @@ const Login = () => {
       </Button>
       <div style={{marginTop: "15px"}}>Users Credentials</div>
       <div className="button-style" >
-        <div>
-          <Button
-            variant="solid"
-            colorScheme="red"
-            width="110%"
-            style={{ marginTop: 8 }}
-            onClick={() => {
-              setEmail("ram@gmail.com");
-              setPassword("123456");
-            }}
-          >
-            Ram
-          </Button>
-        </div>
+        
         <div>
           <Button
             variant="solid"
@@ -171,6 +158,20 @@ const Login = () => {
             }}
           >
             Mohan
+          </Button>
+        </div>
+        <div>
+          <Button
+            variant="solid"
+            colorScheme="red"
+            width="110%"
+            style={{ marginTop: 8 }}
+            onClick={() => {
+              setEmail("alex@gmail.com");
+              setPassword("123456");
+            }}
+          >
+            Alex
           </Button>
         </div>
 

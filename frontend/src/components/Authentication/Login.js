@@ -94,7 +94,7 @@ const Login = () => {
         <InputGroup>
           <Input
             type={show ? "text" : "password"}
-            placeholder="Enter your email"
+            placeholder="Enter your password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
@@ -167,11 +167,11 @@ const Login = () => {
             width="110%"
             style={{ marginTop: 8 }}
             onClick={() => {
-              setEmail("alex@gmail.com");
+              setEmail("arjun@gmail.com");
               setPassword("123456");
             }}
           >
-            Alex
+            Arjun
           </Button>
         </div>
 

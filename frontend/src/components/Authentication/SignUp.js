@@ -159,7 +159,7 @@ const SignUp = () => {
         <InputGroup>
           <Input
             type={show ? "text" : "password"}
-            placeholder="Enter your email"
+            placeholder="Enter your password"
             onChange={(e) => setPassword(e.target.value)}
           />
           <InputRightElement width="4.5rem">
@@ -175,7 +175,7 @@ const SignUp = () => {
         <InputGroup>
           <Input
             type={show ? "text" : "password"}
-            placeholder="Enter your email"
+            placeholder="Enter your password"
             onChange={(e) => setConfirmpassword(e.target.value)}
           />
           <InputRightElement width="4.5rem">

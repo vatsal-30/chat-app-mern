@@ -7,7 +7,9 @@ const chatRoutes = require("./routes/chatRoutes");
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
 const messageRoutes = require("./routes/messageRoutes");
 
-dotenv.config({ path: "./config/config.env" });
+// dotenv.config({ path: "./config/config.env" });
+dotenv.config({ path: "__dirname"+"../config.env" });
+// dotenv.config();
 
 connectDB();
 const app = express();
@@ -38,7 +40,7 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 8080;
 
 const server = app.listen(PORT, () => {
-  console.log(`Vatsal Ajmeri`.rainbow.bold);
+  console.log(`SyncPoint - Let's connect...`.rainbow.bold);
   console.log(`LISTENING ON PORT ${PORT}`.yellow.bold);
 });
 
@@ -50,7 +52,7 @@ const io = require("socket.io")(server, {
 });
 
 io.on("connection", (socket) => {
-  
+
   console.log("Connected to socket.io".brightMagenta.bold);
 
   socket.on("setup", (userData) => {
@@ -61,7 +63,7 @@ io.on("connection", (socket) => {
   socket.on("join chat", (room) => {
     socket.join(room);
   });
-  
+
   socket.on("typing", (room) => socket.in(room).emit("typing"));
   socket.on("stop typing", (room) => socket.in(room).emit("stop typing"));
 

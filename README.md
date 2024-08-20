@@ -1,6 +1,6 @@
 # Description
 
-"WannaChat" is a web-based chat application made using MERN stack technology.
+"SyncPoint" is a web-based chat application made using MERN stack technology.
 
 ## Technologies:  
 

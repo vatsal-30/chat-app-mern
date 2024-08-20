@@ -9,7 +9,7 @@ const userSchema = mongoose.Schema(
     pic: {
       type: String,
       default:
-        "../default profile/Profile.jpg",
+        "../default profile/default.webp",
     },
   },
   { timestamps: true }

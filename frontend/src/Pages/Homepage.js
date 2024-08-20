@@ -40,7 +40,7 @@ const Homepage = () => {
         textAlign="center"
       >
         <Text fontSize="4xl" fontFamily="Work sans">
-          Wannachat ?
+          SyncPoint
         </Text>
       </Box>
       <Box

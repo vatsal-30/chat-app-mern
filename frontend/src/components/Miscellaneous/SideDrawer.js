@@ -149,7 +149,7 @@ const SideDrawer = () => {
             </Text>
           </Button>
         </Tooltip>
-        <Text fontSize={"140%"}>WannaChat</Text>
+        <Text fontSize={"140%"}>SyncPoint</Text>
         <div>
           <Menu>
             <MenuButton p={1}>

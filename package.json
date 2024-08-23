@@ -18,7 +18,7 @@
     "socket.io": "^4.6.2"
   },
   "name": "chat-app-mern",
-  "description": "\"WannaChat\" web-based chat application made using MERN stack technology.",
+  "description": "\"SyncPoint\" web-based chat application made using MERN stack technology.",
   "version": "1.0.0",
   "main": "index.js",
   "repository": {

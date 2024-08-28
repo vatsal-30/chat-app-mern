@@ -1,7 +1,8 @@
 {
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./backend/server.js"
+    "client": "cd ./frontend && npm start",
+    "server": "nodemon ./backend/server.js"
   },
   "type": "commonjs",
   "dependencies": {
@@ -18,7 +19,7 @@
     "socket.io": "^4.6.2"
   },
   "name": "chat-app-mern",
-  "description": "\"SyncPoint\" web-based chat application made using MERN stack technology.",
+  "description": "\"SyncPoint\" web application built on MERN stack technology.",
   "version": "1.0.0",
   "main": "index.js",
   "repository": {

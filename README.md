@@ -2,13 +2,6 @@
 
 SyncPoint is a **real-time chat application** built using the **MERN stack** with **Socket.io** for seamless communication.
 
-## 🚀 Features
-- **Real-time messaging** with WebSockets (Socket.io)
-- **Secure authentication** using JSON Web Tokens (JWT)
-- **Encrypted passwords** with BcryptJS
-- **User-friendly UI** built with ReactJS
-- **MongoDB for efficient data storage**
-
 ## 🛠️ Tech Stack
 - **Frontend:** ReactJS, HTML, CSS
 - **Backend:** Node.js, Express.js
